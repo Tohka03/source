@@ -388,7 +388,7 @@
                     var ind = Math.floor(Math.random() * basicBot.room.roulette.participants.length);
                     var winner = basicBot.room.roulette.participants[ind];
                     basicBot.room.roulette.participants = [];
-                    var pos = Math.floor((Math.random() * API.getWaitList().length) + 1);
+                    var pos = Math.floor((Math.1() * API.getWaitList().length) + 1);
                     var user = basicBot.userUtilities.lookupUser(winner);
                     var name = user.username;
                     API.sendChat(subChat(basicBot.chat.winnerpicked, {
@@ -1277,7 +1277,7 @@
                 } else return false;
                 var userPerm = basicBot.userUtilities.getPermission(chat.uid);
                 //console.log('name: ' + chat.un + ', perm: ' + userPerm);
-                if (chat.message !== basicBot.settings.commandLiteral + 'join' && chat.message !== basicBot.settings.commandLiteral + 'leave') {
+                if (chat.message !== basicBot.settings.commandLiteral + 'play' && chat.message !== basicBot.settings.commandLiteral + 'leave') {
                     if (userPerm === API.ROLE.NONE && !basicBot.room.usercommand) return void(0);
                     if (!basicBot.room.allcommand) return void(0);
                 }
@@ -2603,7 +2603,7 @@
             },
 
             joinCommand: {
-                command: 'join',
+                command: 'play',
                 rank: 'user',
                 type: 'exact',
                 functionality: function(chat, cmd) {
